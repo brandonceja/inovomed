@@ -3,7 +3,7 @@
 		include_once 'dbh.php';
 		$first = mysqli_real_escape_string($conn, $_POST['first']);
 		$last = mysqli_real_escape_string($conn, $_POST['last']);
-		$last2 = mysqli_real_escape_string($conn, $_POST['last']);
+		$last2 = mysqli_real_escape_string($conn, $_POST['last2']);
 		$email = mysqli_real_escape_string($conn, $_POST['email']);
 		$uid = mysqli_real_escape_string($conn, $_POST['username']);
 		$pwd = mysqli_real_escape_string($conn, $_POST['pwd']);
