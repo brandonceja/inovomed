@@ -51,6 +51,7 @@ while($row = mysqli_fetch_array($query)){
 		echo "<tr>
 				<th>".$row[0]."</th>
 				<th>".$row[1]."</th>
+				<th><a href=\"javascript:void(0)\" class=\"yellow upd\" id=\"".$row[0]."\">modificar</a></th>
 				<th><a href=\"../includes/catalogue-manager/drop-especialidad.php?especialidad=".$row[0]."\">Eliminar</a></th>
 			 </tr>";							
 }
@@ -68,6 +69,17 @@ echo "</table>";
 				<input type="submit" class="lgn no-p">
 			</form>
 		</div>
+	</div>
+</div>
+<div class="updater">
+		<center>
+			<h2>Ingrese el nuevo nombre de la especialidad.</h2>
+			<form action="../includes/catalogue-manager/update-especialidad.php" method="POST">
+				<input id="key" type="hidden" value="none" name="key">
+				<span>Nombre de especialidad</span><input type="text" name="especialidad">
+				<input type="submit" class="lgn no-p">
+			</form>
+		</center>
 	</div>
 </div>
 <script src="../js/hide-element.js"></script>

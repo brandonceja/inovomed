@@ -38,6 +38,8 @@ echo "<table>
 				<th>Piso</th>
 				<th>Horario</th>
 				<th>Especialidad</th>
+				<th></th>
+				<th></th>
 				</tr>
 		</thead>";
 
@@ -59,6 +61,7 @@ while($row = mysqli_fetch_array($query)){
 				<th>".$row[2]."</th>
 				<th>".$row[3]."-".$row[4]."</th>
 				<th>".$row[7]."</th>
+				<th><a href=\"javascript:void(0)\" class=\"yellow upd\" id=\"".$row[0]."\">modificar</a></th>
 				<th><a href=\"../includes/catalogue-manager/drop-consultorio.php?consultorio=".$row[0]."\">Eliminar</a></th>
 			 </tr>";							
 }
@@ -98,6 +101,38 @@ echo "</table>";
 				<input type="submit" class="lgn no-p">
 			</form>
 		</div>
+	</div>
+
+	<div class="updater">
+		<h2>Modifique los datos necesarios, los demás déjelos vacios.</h2>
+			<form action="../includes/catalogue-manager/update-consultorio.php" method="POST">
+				<input id="key" type="hidden" value="none" name="key">
+				<span>Número de consultorio</span><input type="number" name="numero"><br>
+				<span>Edificio</span><input type="text" name="edificio"><br>
+				<span>Piso</span><input type="number" name="piso"><br>
+				<span>Horario de apertura</span><input type="time" name="a_time"><br>
+				<span>Horario de cierre</span><input type="time" name="c_time"><br>
+				<span>Especialidad</span><select name="especialidad">
+				<option value="0">--</option>
+<?php 
+
+	/*Query to get specialties*/
+
+	$sql = "SELECT * FROM especialidades;";
+	$query =  mysqli_query($conn, $sql);
+
+	/*Add specialties to select*/
+
+	while($row = mysqli_fetch_array($query)){
+		echo "<option value=".$row[0].">".
+				$row[1].
+			 "</option>";
+	}
+
+?>
+				</select><br>
+				<input type="submit" class="lgn no-p">
+			</form>
 	</div>
 </div>
 <script src="../js/hide-element.js"></script>
