@@ -1,0 +1,493 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+#menu{
+	display: flex;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: space-between;
+	height: 5.5em;
+	padding-left: 15em;
+	padding-right: 20em;
+}
+
+#menu #logo{
+	display: flex;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#menu #logo img{
+	height: 5.5em;
+	margin-right: 3em;
+}
+
+#menu #categories, #menu #address{
+	display: flex;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	flex-direction: row;
+	align-items: center;
+}
+
+#menu #categories{
+	margin-top: 0.6em;
+}
+
+#menu #login{
+	display: flex;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+#menu #login #btn-l, #menu #login #btn-lout{
+	background-color: #fefefe;
+	padding: 0.8em;
+	padding-left: 2em;
+	padding-right: 2em;
+	border: solid 1px #e2e0e0;
+	font-weight: bold;
+	font-size: 0.9em;
+	margin-right: 1em;
+}
+
+#menu #login .btn-s, .lgn{
+	background-color: #52b6c4;
+	color: #fefefe;
+	padding: 0.8em;
+	padding-left: 2em;
+	padding-right: 2em;
+	border: solid 1px #e2e0e0;
+	font-weight: bold;
+	font-size: 0.9em;
+	margin-right: 1em;
+}
+
+#cover{
+	background-image: url(../img/cover.jpg);
+	background-size: 100%;
+	background-position: 0em 55em;
+	height: 33em;
+	padding-top: 6em;
+	text-align: center;
+}
+
+#cover-content{
+	width: 100%;
+	margin-top: 6em;
+	text-align: center;
+}
+
+#cover-content h1{
+	font-size: 4.5em;
+	font-family: "Arial";
+	font-weight: lighter 2px;
+
+}
+
+#first-row{
+	display: flex;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.inov{
+	color: #d6d6d6;
+}
+
+.med{
+	color: #009baa;
+}
+
+.big{
+	font-size: 1.3em;
+}
+
+
+#btn-cover{
+	background-color: #009baa;
+	color: #fefefe;
+	padding: 0.8em;
+	padding-left: 2em;
+	padding-right: 2em;
+	border: 0;
+	font-weight: bold;
+	font-size: 0.9em;
+	border-radius: 0.3em;
+}
+
+#phrase{
+	background-color: #314244;
+	color: #d6d6d6;
+	text-align: center;
+	padding: 4em;
+	font-size: 1.7em;
+	font-family: "Arial";
+}
+
+#mini-galery{
+	display: flex;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+#mini-galery img{
+	width: 33.33%;
+	height: 28em;
+}
+
+#services-container{
+	width:100%;
+	height: 45em;
+	background-color: #d6d6d6;
+	text-align: center;
+	padding-top: 4em;
+}
+
+#services-container h2{
+	font-size: 3em;
+	font-family: "Arial";
+	color: #4D535E;
+}
+
+#services-wrapper{
+	display: flex;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding-top: 2em;
+}
+
+.service{
+	background-color: #f2f2f2;
+	height: 30em;
+	width: 20%;
+	font-family: "Arial";
+	border-radius: 1em;
+	-webkit-box-shadow: 2px 3px 23px -2px rgba(0,0,0,0.17);
+	-moz-box-shadow: 2px 3px 23px -2px rgba(0,0,0,0.17);
+	box-shadow: 2px 3px 23px -2px rgba(0,0,0,0.17);
+}
+
+.service:not(:first-child){
+	margin-left: 4em;
+}
+
+.service h3{
+	font-size: 2em;
+	padding-top: 0.4em;	
+}
+
+.content-srv{
+	margin-top: 0.6em;
+}
+
+.logo-srv{
+	height: 15em;
+}
+
+#unique-logo{
+	height: 18em;
+}
+
+#unique-logo2{
+	height: 14em;
+}
+
+.btn-srv{
+	background-color: #009baa;
+	color: #fefefe;
+	padding: 0.8em;
+	padding-left: 2em;
+	padding-right: 2em;
+	border: 0;
+	font-weight: bold;
+	font-size: 0.9em;
+	margin-top: 3em;
+	border-radius: 0.3em;
+}
+
+#multimedia{
+	background-color: #2b3435;
+	width: 100%;
+	padding-top: 6em;
+	padding-bottom: 6em;
+	text-align: center;
+}
+
+#contact{
+	display: flex;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	width:100%;
+	height: 50em;
+	background-color: #d6d6d6;
+	text-align: center;
+}
+
+#contact div{
+	width: 50%;
+	text-align: center;
+}
+
+#contact #contact-chart{
+	margin-top: -17em;
+	background-color: #f2f2f2;
+	width: 50%;
+	font-family: "Arial";
+	display: inline-block;
+}
+
+#contact #contact-chart #logo-c{
+	padding-top: 3em;
+	width: 100%;
+	display: flex;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+#contact-text{
+	text-align: center;
+	font-size: 1.2em;
+	display: inline-block;
+}
+
+#contact-text h2{
+	margin-bottom: 1em;
+}
+
+#social-c{
+	display: inline-block;
+	width: 100%;
+	padding-top: 1em;
+	margin-bottom: 1em;
+}
+
+#social-c img:not(:first-child){
+	margin-left: 1em;
+}
+
+#contact-chart button{
+	margin-top: 0.2em;
+	margin-bottom: 4em;
+	background-color: #009baa;
+	color: #fefefe;
+	padding: 0.8em;
+	padding-left: 2em;
+	padding-right: 2em;
+	border: 0;
+	font-weight: bold;
+	font-size: 0.9em;
+	border-radius: 0.3em;
+}
+
+#map-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+#map-responsive iframe{
+    left:0;
+    top:0;
+    height:74.5%;
+    width:100%;
+    position:absolute;
+}
+
+#footer{
+	background-color: #314244;
+	height: 30em;
+}
+
+#footer #footer-content{
+	padding-left: 15em;
+	padding-top: 3em;
+	padding-right: 18em;
+}
+
+#footer #footer-content hr{
+	color: #e0e0e0;
+	opacity: 0.3;
+	background-color: #e0e0e0;
+}
+
+#footer #footer-logo{
+	display: flex;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	flex-direction: row;
+	align-items: center;
+	justify-content: left;
+	flex-wrap: wrap;
+}
+
+#footer #footer-content #footer-columns{
+	display: flex;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	align-items: top;
+	justify-content: space-around;
+	color: #e0e0e0;
+	font-family: ClanPro-News, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 0.813em;
+	padding-top: 2em;
+	padding-bottom: 4em;
+}
+
+#footer #footer-content #footer-columns div svg{
+	fill: #fefefe;
+}
+
+#footer #footer-content #footer-columns div div:first-child{
+	display: flex;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	justify-content: stretch;
+	text-transform: uppercase;
+	font-size: 1.4em;
+	margin-bottom: 1em;
+}
+
+#footer #footer-content #footer-columns div div svg{
+	margin-right: 1em; 
+}
+
+#footer #social{
+	padding: 2em;
+	display: flex;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	align-items: center;
+	justify-content: space-around;
+}
+
+#footer-end{
+	padding-top: 1em;
+}
+
+/* The Modal (background) */
+.modal {
+    z-index: 1; /* Sit on top */
+    position: fixed;
+    width: 50%;
+    height: 60%;
+    /*max-height: calc(100% - 100px);*/
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -20%);
+            transform: translate(-50%, -20%);
+    overflow: auto;  Enable scroll if needed
+}
+
+.modal-shadow {
+    display: none;
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 125%;
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* Modal Header */
+.modal-header {
+    padding: 1em 16px;
+    color: #;
+}
+
+.logo-modal{
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+/* Modal Body */
+.modal-body {
+	padding: 2em 16px;
+	padding-top: 0.3em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+
+/* Modal input*/
+
+.modal-body input{
+	width: 10em;
+	height: 2em;
+	margin-bottom: 1em;
+	font-size: 1.5em;
+	padding-left: 1em;
+}
+
+/*Modal a*/
+.modal-body .rgt{
+	font-size: 1.4em;
+	margin-left: 2.8em;
+}
+
+
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #ffffff;
+    background-color: #ffffff;
+    color: #9b9b9b;
+    margin: auto;
+    border-radius: 1em;
+    padding: 0;
+    border: 1px solid #888;
+    width: 60%;
+    -webkit-animation-name: animatetop;
+            animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+            animation-duration: 0.4s
+}
