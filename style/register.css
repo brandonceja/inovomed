@@ -68,14 +68,14 @@
 }
 
 #reg-content #right-reg form span{
-	font-size: 2em;
+	font-size: 1.3em;
 	text-align: left;
 	color: #9b9b9b;
 }
 
 #reg-content #right-reg form input{
-	width: 30em;
-	height: 2em;
+	width: 20em;
+	height: 1.5em;
 	font-size: 1.2em;
 	padding-left: 1em;
 }
