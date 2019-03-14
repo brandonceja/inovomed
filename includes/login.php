@@ -26,11 +26,16 @@
 					}elseif($hashedPwdCheck == true){
 						//login the user here
 						$_SESSION['u_id'] = $row['id'];
-						$_SESSION['u_first'] = $row['first'];
-						$_SESSION['u_last'] = $row['last'];
-						$_SESSION['u_email'] = $row['email'];
+						$_SESSION['u_nameR'] = $row['nombre'];
+						$_SESSION['u_apat'] = $row['apellidoP'];
+						$_SESSION['u_amat'] = $row['apellidoM'];
 						$_SESSION['u_name'] = $row['username'];
-						header("Location: ../index.php?login=success");
+						$_SESSION['u_email'] = $row['email'];
+						$_SESSION['u_fecha'] = $row['fecha_nac'];
+						$_SESSION['u_colonia'] = $row['colonia'];
+						$_SESSION['u_calle'] = $row['calle'];
+						$_SESSION['u_num'] = $row['numero'];
+						header("Location: ../includes/users/profile.php?login=success");
 						exit();
 					}
 				}

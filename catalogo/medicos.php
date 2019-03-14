@@ -129,6 +129,7 @@ echo "</table>";
 				<span>Calle</span><input type="text" name="calle"><br>
 				<span>Número</span><input type="number" name="numero"><br>
 				<span>Especialidad</span><select name="especialidad">
+					<option value="0">--</option>
 <?php 
 
 	/*Query to get specialties*/

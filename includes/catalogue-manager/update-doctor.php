@@ -30,8 +30,6 @@
 				if(preg_match("/^([a-zA-Z]*\s*)*$/", $nombre)){
 					$sql = "UPDATE medicos SET nombres='$nombre' WHERE cedula='$cedula'";
 					$query = mysqli_query($conn, $sql);
-					header("Location: ../../catalogo/medicos.php?doctor=success".$cedula);
-					exit();
 				}else{
 					header("Location: ../../catalogo/medicos.php?doctor=error-change1");
 					exit();
@@ -56,7 +54,7 @@
 				}
 			}
 			if(!empty($fecha_nac)){
-				$sql = "UPDATE medicos SET nombre = '".$nombre."' WHERE cedula = ".$cedula;
+				$sql = "UPDATE medicos SET fecha_nac = '".$fecha_nac."' WHERE cedula = ".$cedula;
 				$query = mysqli_query($conn, $sql);
 			}
 			if(!empty($colonia)){
@@ -86,7 +84,7 @@
 					exit();
 				}
 			}
-			if(!empty($especialidad)){
+			if($especialidad != 0){
 				if(is_numeric($especialidad)){
 					$sql = "UPDATE medicos SET especialidad = '".$especialidad."' WHERE cedula = ".$cedula;
 					$query = mysqli_query($conn, $sql);
@@ -104,6 +102,8 @@
 					exit();
 				}
 			}
+			header("Location: ../../catalogo/medicos.php?doctor=success".$especialidad);
+			exit();
 		}else{
 			header("Location: ../../catalogo/medicos.php?error=empty");
 			exit();

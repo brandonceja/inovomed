@@ -15,9 +15,8 @@
  	for (var i = 0 ; i < arrayOfupdaters.length; i++) {
  		arrayOfupdaters[i].addEventListener("click", function(){
 		 	document.getElementsByClassName('updater')[0].style.display = flag ? "none" : "block";
-		 	let id = arrayOfupdaters[i].id;
-		 	console.log(id);
-		 	document.getElementsByClassName('key')[0].value = id;
+		 	let id = this.id;
+		 	document.getElementById('key').value = id;
 		 	flag = !flag;
  		});
  	}
