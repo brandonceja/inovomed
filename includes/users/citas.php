@@ -3,6 +3,8 @@
 session_start();
 if(isset($_SESSION['u_id']))
 	{
+        include "../dbh.php";	
+
         $uid = $_SESSION['u_id'];
         $uname = $_SESSION['u_name'];
         $uapat = $_SESSION['u_apat'];
@@ -40,26 +42,30 @@ if(isset($_SESSION['u_id']))
      		</a>
      	</div>
     </div>
-    <div class="content">
+    <div class="content"><br><br><br><br>
         <h2>Bienvenido <?php echo $uname;?></h2>
-        <div class="profile-top">
-            <div class="profile-image">
-                <img src="../../img/profile-icon.png" alt="">
-            </div>
-            <div class="data">
-                <p>Nombre(s): <?php echo $unameR;?></p>
-                <p>Apellidos: <?php echo $uapat." ".$uamat;?></p>
-                <p>Email: <?php echo $uemail;?></p>
-                <p>Fecha de nacimiento: <?php echo $ufecha;?></p>
-                <p>Dirección</p>
-                <p>Colonia: <?php echo $ucolonia;?></p>
-                <p>Calle: <?php echo $ucalle;?></p>
-                <p>Número: <?php echo "#".$unum;?></p>
-            </div>
-        </div>
+        <?php
+            $sql = "SELECT * FROM citas INNER JOIN medicos ON citas.medico=medicos.cedula INNER JOIN consultorios ON 
+             consultorios.id_consultorio=citas.consultorio WHERE paciente='$uid' "; 
+            $query = mysqli_query($conn, $sql);
+
+            if (mysqli_num_rows($query)==0){
+            
+        ?>
+        <h2>Por el momento no tiene citas agendadas.</h2><br><br><br>
         <div class="check-consults">
-            <a href="./citas.php">Citas agendadas</a>
+            <a href="../../consultas.php">Agendar cita</a>
         </div>
+        <?php
+            }else{
+                echo "<br><br>";
+                while($row = mysqli_fetch_array($query)){
+                    echo "<h2>Su cita es en ".$row['fecha']." a las ".$row['horario']."</h2>";	
+                    echo "<h2> en el consultorio ".$row['id_consultorio'].", edificio ". $row['edificio'].", piso ".$row['piso']."</h2>";	
+                    echo "<h2>"."con Dr. ".$row['nombres']."  ".$row['apellidoP']."  ".$row['apellidoM']."</h2>";			
+                }
+            }
+        ?>
     </div>
 </body>
 </html>

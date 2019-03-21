@@ -115,5 +115,11 @@
 		</div>
 	</div>
 	<script src="./js/modal.js"></script>
+	<script>
+		var btn1 = document.getElementById("btn-2");
+		btn1.onclick = function() {
+    	document.getElementById("modalshadow").style.display = "block";
+		}
+	</script>
 </body>
 </html>

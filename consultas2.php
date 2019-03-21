@@ -40,14 +40,21 @@
             $cedula = $_GET["cedula"];
             $especialidad = $_GET["especialidad"];
 	?>
-			<form action="./includes/add-consult.php" method="GET"><br><br>
+            <form action="./includes/add-consult.php" method="GET"><br><br>
+                    <input type="hidden" name="cedula" value="<?php echo $cedula;?>">
+                    <input type="hidden" name="especialidad" value="<?php echo $especialidad;?>">
 					<img src="./img/paso3.png" alt=""><br>
                     <span>Seleccione la fecha y hora para su cita:</span><br><br>
                     <span>Elija una fecha: </span><br><br>
                     <input type="date" id="date" name="fecha"><br><br>
 					<span>A continuación se listan los horarios que el médico seleccionado tiene disponibles.</span><br><br>
 					<select name="horario">
-	<?php 
+    <?php 
+    
+        /*Query to get consult room*/
+        $sql = "SELECT id_consultorio FROM consultorios WHERE especialidad='$especialidad'";
+        $query =  mysqli_query($conn, $sql);
+        $consultorio = mysqli_fetch_array($query)[0];
 
 		/*Query to get t1*/
 
@@ -64,8 +71,8 @@
 		$sql = "SELECT id_consultorio,horario_cierre FROM consultorios WHERE especialidad='$especialidad'";
 		$query =  mysqli_query($conn, $sql);
 
-		/*Set schedules*/
-
+        /*Set schedules*/
+        
         $t2 = mysqli_fetch_array($query)[1];
         $t2 = substr($t2, 0, 2);
        
@@ -77,8 +84,9 @@
 		}
 
 	?>
-					</select><br><br><br>
-					<input type="submit" class="lgn no-p" value="Agendar Cita">
+                    </select><br><br><br>
+                    <input type="hidden" name="consultorio" value="<?php echo $consultorio;?>">
+					<input type="submit" class="lgn no-p" value="Agendar Cita" name="submit">
 			</form>
 			</div>
 			<?php
@@ -143,7 +151,7 @@
             var date = new Date(this.value);
             
             if(date.getDay() == 5 || date.getDay() == 6){
-                alert("Lo sentimos inovomed no trabaja en fines de semana.");
+                alert("Lo sentimos InovoMed no trabaja en fines de semana.");
                 this.value = today;
             }
             

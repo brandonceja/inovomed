@@ -3,7 +3,6 @@ var modal = document.getElementById('myModal');
 
 // Get the button that opens the modal
 var btn = document.getElementById("btn-l");
-var btn1 = document.getElementById("btn-2");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
@@ -11,10 +10,6 @@ var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal 
 btn.onclick = function() {
-    document.getElementById("modalshadow").style.display = "block";
-}
-
-btn1.onclick = function() {
     document.getElementById("modalshadow").style.display = "block";
 }
 
