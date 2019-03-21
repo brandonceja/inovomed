@@ -52,7 +52,7 @@
 				</div>
 				<h3 class="title-srv">Consultas</h3>
 				<div class="content-srv">Los mejores especialistas al cuidado <br> de tu bienestar.</div>
-				<button class="btn-srv">ver más</button>
+				<a href="./consultas.php"><button class="btn-srv">ver más</button></a>
 			</div>
 			<div class="service">
 				<div class="logo-srv">
