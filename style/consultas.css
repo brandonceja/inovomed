@@ -1,0 +1,87 @@
+#mini-cover{
+    background-image: linear-gradient(rgb(0,0,0,0.5), rgb(0,0,0,0.5)), url("../img/consultas.jpg");
+    background-size: 100%;
+    background-position-y: 40%;
+    height: 230px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#mini-cover h2{
+    font-family: 'Arial';
+    color: #fff;
+    font-size: 3em;
+    text-transform: uppercase;
+}
+
+#consult-content{
+    background-color: #d6d6d6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2em 0 2em 0;
+}
+
+#consult-content p{
+    font-family: 'Arial';
+    font-size: 2em;
+    color: #4D535E;
+}
+
+#cita{
+    background-color: #fff;
+	display: flex;
+	color: #9b9b9b;
+    font-size: 1.5em;
+    padding: 1em;
+	border-radius: 1em;
+	margin: 1em;
+	width: 60%;
+	height: auto;
+	justify-content: center;
+	-webkit-box-shadow: 2px 3px 23px -2px rgba(0,0,0,0.17);
+	-moz-box-shadow: 2px 3px 23px -2px rgba(0,0,0,0.17);
+	box-shadow: 2px 3px 23px -2px rgba(0,0,0,0.17);
+}
+
+#cita img{
+    height: 2em;
+    width: auto;
+    margin-left: -55px;
+    margin-bottom: -35px;
+}
+
+#cita select, input{
+    width: 97%;
+    font-size: 1em;
+}
+
+.no-p{
+    width: 40%;
+    margin-left: 30%;
+    margin-top: 1em;
+}
+
+.login button{
+    margin-top: 0.2em;
+	margin-bottom: 4em;
+	background-color: #009baa;
+	color: #fefefe;
+	padding: 0.8em;
+	padding-left: 2em;
+	padding-right: 2em;
+	border: 0;
+	font-weight: bold;
+	font-size: 0.9em;
+	border-radius: 0.3em;
+}
+
+.login #btn-l{
+    background-color: #fefefe;
+    border-color: solid 3px #4D535E;
+    color: #4D535E;
+}
