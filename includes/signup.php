@@ -20,7 +20,7 @@
 		}else{
 			//Check if input characters are valid
 			if(!preg_match("/^[a-zA-Z]*$/", $first) || !preg_match("/^[a-zA-Z]*$/", $last) || !preg_match("/^[a-zA-Z]*$/", $last2)){
-				header("location: ../signup.php?signup=invalid");
+				header("location: ../signup-view.php?signup=invalid");
 				exit();
 			}else{
 				//Check if email is valid
