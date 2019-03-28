@@ -56,11 +56,11 @@ if(isset($_SESSION['u_id']))
         <?php
             }else{
 
-
-              $form = '  <form class="cancel" action="javascript:void(0)" METHOD="GET">
-                <input id="citta" type="hidden" value="<?php echo $id_cita;?>" name="cita">
-                <input type="submit" value="Cancelar cita">
-            </form>';
+              $form1 = '  <form class="cancel" action="javascript:void(0)" METHOD="GET">
+                        <input class="citta" type="hidden" value="';
+              $form2 = '" name="cita">
+                            <input type="submit" value="Cancelar cita">
+                        </form>';
 
 
                 echo "<h2>Usted tiene: ".mysqli_num_rows($query)." citas agendadas.</h2>";
@@ -76,15 +76,15 @@ if(isset($_SESSION['u_id']))
                 echo "<th></th>";
                 echo "</tr>";
                 while($row = mysqli_fetch_array($query)){
-                    $id_cita = $row['id'];
+                    $id_cita = $row[0];
                     echo "<tr>";
-                    echo "<td>".$row['id']."</td>";
+                    echo "<td>".$id_cita."</td>";
                     echo "<td>".$row['fecha']."</td>";
                     echo "<td>".$row['horario']."</td>";
                     echo "<td> Edificio: ".$row['edificio']."<br> Piso: ".$row['piso']."<br> Consultorio:".$row['id_consultorio']."</td>";
                     echo "<td>".$row['nombre']."  ".$row['apellidoP']."  ".$row['apellidoM']."</td>";	
                     echo "<td><a href=\"\">ver paciente</a></td>";
-                    echo "<td>".$form."</td>";	
+                    echo "<td>".$form1.$id_cita.$form2."</td>";	
                     echo "</tr>";
                 }
                 echo "</table>";
@@ -93,12 +93,25 @@ if(isset($_SESSION['u_id']))
     </div>
 </body>
 <script>
+
+    var length = document.getElementsByClassName('cancel').length;
+
     document.getElementsByClassName('cancel')[0].addEventListener("click", function(){
-        if(confirm("¿Seguro de que quiere cancelar su cita?")){
-            var cita = document.getElementById('citta').value;
-            window.location = "../delete-cita.php?cita="+cita;
-        }
-    });
+        if(confirm("¿Seguro de que quiere cancelar su cita?")){   
+             var cita = document.getElementsByClassName('citta')[0].value;
+             window.location = "../delete-cita.php?cita="+cita+"&doc=true";
+            }
+        });
+    
+
+    document.getElementsByClassName('cancel')[1].addEventListener("click", function(){
+        if(confirm("¿Seguro de que quiere cancelar su cita?")){   
+             var cita = document.getElementsByClassName('citta')[1].value;
+             window.location = "../delete-cita.php?cita="+cita+"&doc=true";
+            }
+        });
+    
+
 </script>
 </html>
 <?php 
