@@ -60,14 +60,27 @@ if(isset($_SESSION['u_id']))
             }else{
                 echo "<br><br>";
                 while($row = mysqli_fetch_array($query)){
+                    $id_cita = $row['id'];
                     echo "<h2>Su cita es en ".$row['fecha']." a las ".$row['horario']."</h2>";	
                     echo "<h2> en el consultorio ".$row['id_consultorio'].", edificio ". $row['edificio'].", piso ".$row['piso']."</h2>";	
                     echo "<h2>"."con Dr. ".$row['nombres']."  ".$row['apellidoP']."  ".$row['apellidoM']."</h2>";			
-                }
-            }
+                }            
         ?>
+            <form class="cancel" action="javascript:void(0)" METHOD="GET">
+                <input id="citta" type="hidden" value="<?php echo $id_cita;?>" name="cita">
+                <input type="submit" value="Cancelar cita">
+            </form>
+            <?php }?>
     </div>
 </body>
+<script>
+    document.getElementsByClassName('cancel')[0].addEventListener("click", function(){
+        if(confirm("¿Seguro de que quiere cancelar su cita?")){
+            var cita = document.getElementById('citta').value;
+            window.location = "../delete-cita.php?cita="+cita;
+        }
+    });
+</script>
 </html>
 <?php 
     }else{
