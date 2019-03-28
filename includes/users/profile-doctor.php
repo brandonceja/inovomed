@@ -64,7 +64,7 @@ if(isset($_SESSION['u_id']))
             </div>
         </div>
         <div class="check-consults">
-            <a href="./citas.php">Citas agendadas</a>
+            <a href="./citas-doctor.php">Citas agendadas</a>
         </div>
     </div>
 </body>
