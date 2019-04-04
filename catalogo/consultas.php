@@ -72,7 +72,7 @@ echo "</table>";
 	<div class="adder">
 		<button class="lgn no-p hidder" id="add">Agregar Consulta</button>
 		<div class="hidden">
-			<form action="../includes/catalogue-manager/add-doctor.php" method="POST">
+			<form action="../includes/catalogue-manager/add-consult.php" method="POST">
             <span>Especialidad-Médico</span><select name="medico">
 <?php 
 
@@ -91,9 +91,29 @@ echo "</table>";
 
 ?>
 				</select><br>
-				<span>Fecha</span><input type="date" name="fecha">
-                <span>Hora</span><input type="time" name="fecha">
-                <span>Paciente</span><select name="medico">
+				<span>Fecha</span><input type="date" name="fecha"><br>
+                <span>Hora</span><input type="time" name="hora"><br><br>
+                <span>*Asegurese de que la especialidad del consultorio concuerda <br> 
+                    con la especialidad del médico seleccionado.</span><br><br>
+                <span>Consultorio</span><select name="consultorio">
+<?php 
+
+	/*Query to get specialties*/
+
+	$sql = "SELECT * FROM consultorios INNER JOIN especialidades ON especialidades.id_especialidad = consultorios.especialidad;";
+	$query =  mysqli_query($conn, $sql);
+
+	/*Add specialties to select*/
+
+	while($row = mysqli_fetch_array($query)){
+		echo "<option value=".$row[0].">".
+                $row[0]."-".$row['nombre'].
+			 "</option>";
+	}
+
+?>
+				</select><br>
+                <span>Paciente</span><select name="paciente">
 <?php 
 
 	/*Query to get specialties*/
