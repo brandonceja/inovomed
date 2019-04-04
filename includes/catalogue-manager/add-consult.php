@@ -19,16 +19,44 @@
 		/*Check regex*/
 
 			if (is_numeric($medico) && is_numeric($consultorio) && is_numeric($paciente)) {
-				
-					/*Insert into database*/
+                
+                /* Check if patient has already a scheduled consult */
+                $sql = "SELECT * FROM citas WHERE paciente = '$paciente'";
+                $query = mysqli_query($conn, $sql);
 
-                    $sql = "INSERT INTO citas (id, medico, paciente, consultorio, horario, fecha) 
-                                VALUES ('', '$medico', '$paciente', '$consultorio', '$hora', '$fecha')";
-					$query = mysqli_query($conn, $sql);
+                if(mysqli_num_rows($query) == 0){
 
-					header("location: ../../catalogo/consultas.php?status=success");
-					exit();
-				
+                    /*Check if doctor is busy*/
+                    $sql = "SELECT * FROM citas WHERE medico = '$medico' AND horario = '$hora' AND fecha = '$fecha';";
+                    $query = mysqli_query($conn, $sql);
+
+                    if(mysqli_num_rows($query) == 0){  
+
+                        /*Check if consult room is busy*/
+                        $sql = "SELECT * FROM citas WHERE consultorio = '$consultorio' AND horario = '$hora' AND fecha = '$fecha';";
+                        $query = mysqli_query($conn, $sql);
+
+                        if(mysqli_num_rows($query) == 0){
+                            /*Insert into database*/
+
+                            $sql = "INSERT INTO citas (id, medico, paciente, consultorio, horario, fecha) 
+                            VALUES ('', '$medico', '$paciente', '$consultorio', '$hora', '$fecha')";
+                            $query = mysqli_query($conn, $sql);
+
+                            header("location: ../../catalogo/consultas.php?status=success");
+                            exit();
+                        }else{
+                            header("location: ../../catalogo/consultas.php?error=consultorio-busy");
+                            exit();
+                        }  
+                    }else{
+                        header("location: ../../catalogo/consultas.php?error=doctor-busy");
+                        exit();
+                    }	
+                }else{
+                    header("location: ../../catalogo/consultas.php?error=patient-already-scheduled");
+				    exit();
+                }	
 			}else{
 				header("location: ../../catalogo/consultas.php?error=invalid-char");
 				exit();
