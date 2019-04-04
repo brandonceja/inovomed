@@ -42,7 +42,7 @@
 			</div>
 		</div>
 		<div id="management">
-			<a class="manager" href="">
+			<a class="manager" href="./catalogo/consultas.php">
 				<h2>Consultas</h2>
 			</a>
 			<a class="manager" href="./catalogo/medicos.php">

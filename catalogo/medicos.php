@@ -65,9 +65,9 @@ while($row = mysqli_fetch_array($query)){
 				<th>".$row[1]."</th>
 				<th>".$row[2]."</th>
 				<th>".$row[3]."</th>
-				<th>".$row[4]."</th>
-				<th>".$row[5].", ".$row[6]." #".$row[7]."</th>
-				<th>".$row[10]."</th>
+				<th>".$row[5]."</th>
+				<th>".$row[6].", ".$row[7]." #".$row[8]."</th>
+				<th>".$row[11]."</th>
 				<th><a href=\"javascript:void(0)\" class=\"yellow upd\" id=\"".$row[0]."\">modificar</a></th>
 				<th><a href=\"../includes/catalogue-manager/drop-doctor.php?doctor=".$row[0]."\">eliminar</a></th>
 			 </tr>";							
