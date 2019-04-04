@@ -3,7 +3,8 @@
 
 	include "../dbh.php";
 
-	/*POST variables*/
+    /*POST variables*/
+    $id =           mysqli_real_escape_string($conn, $_POST["id"]);
 	$medico =    	mysqli_real_escape_string($conn, $_POST["medico"]);
 	$fecha =    	mysqli_real_escape_string($conn, $_POST["fecha"]);
     $hora = 		mysqli_real_escape_string($conn, $_POST["hora"]);
@@ -21,19 +22,19 @@
 			if (is_numeric($medico) && is_numeric($consultorio) && is_numeric($paciente)) {
                 
                 /* Check if patient has already a scheduled consult */
-                $sql = "SELECT * FROM citas WHERE paciente = '$paciente'";
+                $sql = "SELECT * FROM citas WHERE id <> '$id' AND paciente = '$paciente'";
                 $query = mysqli_query($conn, $sql);
 
                 if(mysqli_num_rows($query) == 0){
 
                     /*Check if doctor is busy*/
-                    $sql = "SELECT * FROM citas WHERE medico = '$medico' AND horario = '$hora' AND fecha = '$fecha';";
+                    $sql = "SELECT * FROM citas WHERE medico = '$medico' AND horario = '$hora' AND fecha = '$fecha' AND id != '$id';";
                     $query = mysqli_query($conn, $sql);
 
                     if(mysqli_num_rows($query) == 0){  
 
                         /*Check if consult room is busy*/
-                        $sql = "SELECT * FROM citas WHERE consultorio = '$consultorio' AND horario = '$hora' AND fecha = '$fecha';";
+                        $sql = "SELECT * FROM citas WHERE consultorio = '$consultorio' AND horario = '$hora' AND fecha = '$fecha' AND id != '$id';";
                         $query = mysqli_query($conn, $sql);
 
                         if(mysqli_num_rows($query) == 0){
@@ -44,6 +45,12 @@
                             $query = mysqli_query($conn, $sql);
 
                             if(mysqli_num_rows($query) > 0){
+
+                                /*Delete previous schedule*/
+                                $sql = "DELETE FROM citas WHERE id='".$id."';";
+                                $query = mysqli_query($conn, $sql);
+
+
                                 /*Insert into database*/
                                 $sql = "INSERT INTO citas (id, medico, paciente, consultorio, horario, fecha) 
                                 VALUES ('', '$medico', '$paciente', '$consultorio', '$hora', '$fecha')";
@@ -64,7 +71,7 @@
                         exit();
                     }	
                 }else{
-                    header("location: ../../catalogo/consultas.php?error=patient-already-scheduled");
+                    header("location: ../../catalogo/consultas.php?error=patient-already-$id-scheduled");
 				    exit();
                 }	
 			}else{

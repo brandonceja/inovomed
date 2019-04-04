@@ -138,7 +138,8 @@ echo "</table>";
 		<div class="updater">
 			<br><br>
 			<h2>Modifique los datos necesarios, los demás déjelos vacios.</h2>
-			<form action="../includes/catalogue-manager/update-doctor.php" method="POST">
+			<form action="../includes/catalogue-manager/update-consult.php" method="POST">
+            <input type="hidden" name="id" value="none" id="key">
             <span>Especialidad-Médico</span><select name="medico">
 <?php 
 
@@ -157,9 +158,29 @@ echo "</table>";
 
 ?>
 				</select><br>
-				<span>Fecha</span><input type="date" name="fecha">
-                <span>Hora</span><input type="time" name="fecha">
-                <span>Paciente</span><select name="medico">
+				<span>Fecha</span><input type="date" name="fecha"><br>
+                <span>Hora</span><input type="time" name="hora"><br><br>
+                <span>*Asegurese de que la especialidad del consultorio concuerda <br> 
+                    con la especialidad del médico seleccionado.</span><br><br>
+                <span>Consultorio</span><select name="consultorio">
+<?php 
+
+	/*Query to get specialties*/
+
+	$sql = "SELECT * FROM consultorios INNER JOIN especialidades ON especialidades.id_especialidad = consultorios.especialidad;";
+	$query =  mysqli_query($conn, $sql);
+
+	/*Add specialties to select*/
+
+	while($row = mysqli_fetch_array($query)){
+		echo "<option value=".$row[0].">".
+                $row[0]."-".$row['nombre'].
+			 "</option>";
+	}
+
+?>
+				</select><br>
+                <span>Paciente</span><select name="paciente">
 <?php 
 
 	/*Query to get specialties*/
