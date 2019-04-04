@@ -83,7 +83,7 @@ if(isset($_SESSION['u_id']))
                     echo "<td>".$row['horario']."</td>";
                     echo "<td> Edificio: ".$row['edificio']."<br> Piso: ".$row['piso']."<br> Consultorio:".$row['id_consultorio']."</td>";
                     echo "<td>".$row['nombre']."  ".$row['apellidoP']."  ".$row['apellidoM']."</td>";	
-                    echo "<td><a href=\"\">ver paciente</a></td>";
+                    echo "<td><a href=\"profile-paciente.php?paciente=".$row[6]."\">ver paciente</a></td>";
                     echo "<td>".$form1.$id_cita.$form2."</td>";	
                     echo "</tr>";
                 }
