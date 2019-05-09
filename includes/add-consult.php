@@ -26,7 +26,7 @@ if(isset($_SESSION['u_id']))
         $last_id = mysqli_insert_id($conn);
 
 
-        $sql = "SELECT nombres, apellidoP, apellidoM, edificio, piso FROM citas INNER JOIN medicos ON medicos.cedula = citas.medico INNER JOIN
+        $sql = "SELECT nombres, apellidoP, apellidoM, edificio, piso, email FROM citas INNER JOIN medicos ON medicos.cedula = citas.medico INNER JOIN
                 consultorios ON citas.consultorio=consultorios.id_consultorio WHERE citas.id = '$last_id';";
         $query =  mysqli_query($conn, $sql);
 
@@ -36,6 +36,7 @@ if(isset($_SESSION['u_id']))
             $apellidoM = $row[2];
             $edificio = $row[3];
             $piso = $row[4];
+            $emailDoc = $row[5];
         }
 
         $sql = "SELECT nombre, apellidoP, apellidoM, email FROM users INNER JOIN citas ON users.id = citas.paciente 
@@ -50,7 +51,8 @@ if(isset($_SESSION['u_id']))
         }
 
 
-        //SEND MAIL
+        //SEND MAIL TO PATIENT
+
         require '../phpmailer/PHPMailerAutoload.php';
         require '../phpmailer/credentials.php';
 
@@ -100,6 +102,57 @@ if(isset($_SESSION['u_id']))
         } else {
             echo 'Message has been sent';
         }
+
+
+        //SEND MAIL TO DOCTOR
+
+        $mail = new PHPMailer;
+
+        //$mail->SMTPDebug = 4;                               // Enable verbose debug output
+
+        $mail->isSMTP();                                      // Set mailer to use SMTP
+        $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+        $mail->SMTPAuth = true;                               // Enable SMTP authentication
+        $mail->Username = EMAIL;                 // SMTP username
+        $mail->Password = PASS;                           // SMTP password
+        $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+        $mail->Port = 587;                                    // TCP port to connect to
+
+        $mail->setFrom(EMAIL, 'Inovomed');
+        $mail->addAddress($emailDoc, $nombre.' '.$apellidoP.' '.$apellidoM);     // Add a recipient
+        $mail->addReplyTo(EMAIL);
+
+        $mail->isHTML(true);                                  // Set email format to HTML
+
+
+        $content = '<div style="background-color:#ededed; padding: 2em 2em; ">
+        <div style="background-color:white; text-align:center; width: 80%; margin-left:10%; padding-top: 3em;">
+            <img src="https://i.ibb.co/SB9L5V8/logo.png" alt="">
+            <br><br>
+                <h2 style="color:#bebebe; font-family:Arial;">Su cita es en '.$fecha.' a las '.$horario.'. <br>
+                    en el consultorio '.$consultorio.', edificio '.$edificio.', piso '.$piso.' <br>
+                    con el paciente '.$nombreUser.' '.$apellidoPUser.' '.$apellidoMUser.'
+                </h2>		
+                <form class="cancel" action="javascript:void(0)" METHOD="GET">
+                <input id="citta" type="hidden" value="<?php echo $id_cita;?>" name="cita">
+                <a href="localhost/inovomed" style="padding: 0.6em 0.2em 0.6em 0.2em; 
+                margin: 0; background-color:red; color:white; border:none; text-decoration:none; font-size:1.2em;">Cancelar cita</a>
+                <br><br>
+            </form>
+        </div>
+        </div>';
+
+        $mail->Subject = 'Su paciente de Inovomed';
+        $mail->Body    = $content;
+        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+        if(!$mail->send()) {
+            echo 'Message could not be sent.';
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
+        } else {
+            echo 'Message has been sent';
+        }
+
 
 
         header("Location: ./users/profile.php?mail=$email");
