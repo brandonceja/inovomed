@@ -17,7 +17,7 @@
 			
 		 	document.getElementsByClassName('updater')[0].style.display = flag ? "none" : "block";
 		 	let id = this.id;
-		 	document.getElementById('key').value = id;
+			document.getElementById('key').value = id;
 		 	flag = !flag;
  		});
  	}
