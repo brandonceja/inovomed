@@ -408,7 +408,7 @@
     left: 50%;
     -webkit-transform: translate(-50%, -20%);
             transform: translate(-50%, -20%);
-    overflow: auto;  Enable scroll if needed
+    overflow: auto;  
 }
 
 .modal-shadow {
@@ -439,7 +439,7 @@
 /* Modal Header */
 .modal-header {
     padding: 1em 16px;
-    color: #;
+   /* color: #;*/
 }
 
 .logo-modal{

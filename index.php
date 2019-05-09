@@ -16,8 +16,6 @@
 		<div id="logo">
 			<img src="logo.png" alt="">
 			<div id="categories">
-				<?php include "./includes/svg-categorie.php"; ?>
-				<div>Categorias</div>
 			</div>
 		</div>
 	<?php	
@@ -68,7 +66,7 @@
 				</div>
 				<h3 class="title-srv">Farmacia</h3>
 				<div class="content-srv">Medicamentos de calidad al mejor <br> precio.</div>
-				<button class="btn-srv">ver más</button>
+				<a href="./drugstore.php"><button class="btn-srv">ver más</button></a>
 			</div>
 		</div>
 	</div>
