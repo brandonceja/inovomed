@@ -25,25 +25,24 @@
     ?>
 	</div>
 	<div id="mini-cover">
-		<h2>Consultas</h2>
+		<h2>Laboratorio</h2>
 	</div>
 	<div id="consult-content">
-		<p>Agende una cita para ser atendido por los mejores profesionales.</p>
+		<p>Agende una cita en el laboratorio para ser atendido por los mejores profesionales.</p>
 		<div id="cita">
 		<?php
 		if(isset($_SESSION['u_id']))
 		{
 	?>
-			<form action="consultas1.php" method="GET"><br><br>
+			<form action="lab2.php" method="GET" style="width: 500px;"><br><br>
 			<img src="./img/paso1.png" alt=""><br>
-			<span>Seleccione una especialidad:</span><br>
-			<span>En caso de no conocer la especialidad que necesita seleccione un médico general.</span><br><br>
-			<select name="especialidad">
+			<span>Seleccione un servicio:</span><br>
+			<select name="servicio">
 	<?php 
 
-		/*Query to get specialties*/
+		/*Query to get services*/
 
-		$sql = "SELECT * FROM especialidades;";
+		$sql = "SELECT * FROM servicios;";
 		$query =  mysqli_query($conn, $sql);
 
 		/*Add specialties to select*/

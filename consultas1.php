@@ -19,10 +19,6 @@
 	<div id="menu">
 		<div id="logo">
 			<img src="logo.png" alt="">
-			<div id="categories">
-				<?php include "./includes/svg-categorie.php"; ?>
-				<div>Categorias</div>
-			</div>
 		</div>
 	<?php	
        include "includes/display-buttons.php";

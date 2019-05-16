@@ -25,51 +25,44 @@
     ?>
 	</div>
 	<div id="mini-cover">
-		<h2>Consultas</h2>
+		<h2>Laboratorio</h2>
 	</div>
 	<div id="consult-content">
-		<p>Agende una cita para ser atendido por los mejores profesionales.</p>
+		<p>Agende una cita en el laboratorio para ser atendido por los mejores profesionales.</p>
 		<div id="cita">
 		<?php
 		if(isset($_SESSION['u_id']))
 		{
-            $cedula = $_GET["cedula"];
-            $especialidad = $_GET["especialidad"];
+            $servicio = $_GET["servicio"];
 	?>
-            <form action="./includes/add-consult.php" method="GET"><br><br>
-                    <input type="hidden" name="cedula" value="<?php echo $cedula;?>">
-                    <input type="hidden" name="especialidad" value="<?php echo $especialidad;?>">
-					<img src="./img/paso3.png" alt=""><br>
+            <form action="./includes/add-lab.php" method="GET"><br><br>
+                    <input type="hidden" name="servicio" value="<?php echo $servicio;?>">
+					<img src="./img/paso2.png" alt=""><br>
                     <span>Seleccione la fecha y hora para su cita:</span><br><br>
                     <span>Elija una fecha: </span><br><br>
                     <input type="date" id="date" name="fecha"><br><br>
-					<span>A continuación se listan los horarios que el médico seleccionado tiene disponibles.</span><br><br>
+					<span>A continuación se listan los horarios en que el servicio está disponible.</span><br><br>
 					<select name="horario">
     <?php 
     
-        /*Query to get consult room*/
-        $sql = "SELECT id_consultorio FROM consultorios WHERE especialidad='$especialidad'";
-        $query =  mysqli_query($conn, $sql);
-        $consultorio = mysqli_fetch_array($query)[0];
-
 		/*Query to get t1*/
 
-		$sql = "SELECT id_consultorio,horario_apertura FROM consultorios WHERE especialidad='$especialidad'";
-		$query =  mysqli_query($conn, $sql);
+		$sql = "SELECT hora_inicio FROM servicios WHERE id='$servicio'";
+        $query =  mysqli_query($conn, $sql);
 
 		/*Add specialties to select*/
 
-        $t1 = mysqli_fetch_array($query)[1];
+        $t1 = mysqli_fetch_array($query)[0];
         $t1 = substr($t1, 0, 2);
        
         /*Query to get t2*/
 
-		$sql = "SELECT id_consultorio,horario_cierre FROM consultorios WHERE especialidad='$especialidad'";
+		$sql = "SELECT hora_fin FROM servicios WHERE id='$servicio'";
 		$query =  mysqli_query($conn, $sql);
 
         /*Set schedules*/
         
-        $t2 = mysqli_fetch_array($query)[1];
+        $t2 = mysqli_fetch_array($query)[0];
         $t2 = substr($t2, 0, 2);
        
         $t1 += 0;
@@ -81,7 +74,6 @@
 
 	?>
                     </select><br><br><br>
-                    <input type="hidden" name="consultorio" value="<?php echo $consultorio;?>">
 					<input type="submit" class="lgn no-p" value="Agendar Cita" name="submit">
 			</form>
 			</div>

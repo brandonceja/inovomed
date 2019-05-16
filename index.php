@@ -58,7 +58,7 @@
 				</div>
 				<h3 class="title-srv">Laboratorio</h3>
 				<div class="content-srv">Resultados 100% confiables en el <br> menor tiempo posible.</div>
-				<button class="btn-srv">ver más</button>
+				<a href="./lab1.php"><button class="btn-srv">ver más</button></a>
 			</div>
 			<div class="service">
 				<div class="logo-srv">
