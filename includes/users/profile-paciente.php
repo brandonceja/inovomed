@@ -33,6 +33,7 @@ if(isset($_SESSION['u_id']))
 	<meta charset="utf-8 ">
 	<link rel="stylesheet" href="../../style/profile.css">
     <link rel="stylesheet" href="../../style/style.css">
+    <link rel="stylesheet" href="../../style/citas-doctor.css">
 	<link rel="shortcut icon" href="../../icon.bmp" type="image/x-icon" />
 </head>
 <body>
@@ -40,7 +41,7 @@ if(isset($_SESSION['u_id']))
 		<div id="logo">
 			<img src="../../logo.png" alt="">
 			<div id="categories">
-            <a href="../../index.php"><button class="lgn">Página principal</button></a>
+            <a href="./profile-doctor.php"><button class="lgn">Perfil</button></a>
 			</div>
 		</div>
         <div id="login">
@@ -65,9 +66,49 @@ if(isset($_SESSION['u_id']))
                 <p>Número: <?php echo "#".$unum;?></p>
             </div>
         </div>
-       <!-- <div class="check-consults">
-            <a href="./citas.php">Citas agendadas</a>
-        </div> -->
+        <?php
+            $sql = "SELECT * FROM citas_archivadas INNER JOIN users ON citas_archivadas.paciente=users.id INNER JOIN consultorios ON 
+             consultorios.id_consultorio=citas_archivadas.consultorio INNER JOIN medicos ON citas_archivadas.medico = medicos.cedula 
+             WHERE users.id='$id' "; 
+            $query = mysqli_query($conn, $sql);
+
+            if (mysqli_num_rows($query)==0){
+            
+        ?>
+        <h2>Este paciente no ha acudido a ninguna cita.</h2>
+        <?php
+            }else{
+
+              $form1 = '  <form class="cancel" action="javascript:void(0)" METHOD="GET">
+                        <input class="citta" type="hidden" value="';
+              $form2 = '" name="cita">
+                            <input type="submit" value="Cancelar cita">
+                        </form>';
+
+
+                echo "<h2>Este paciente ha tenido: ".mysqli_num_rows($query)." citas.</h2>";
+                echo "<br><br>";
+                echo "<table >";
+                echo "<tr>";
+                echo "<th>id</th>";
+                echo "<th>fecha</th>";
+                echo "<th>hora</th>";
+                echo "<th>lugar</th>";
+                echo "<th>médico</th>";
+                echo "</tr>";
+                while($row = mysqli_fetch_array($query)){
+                    $id_cita = $row[0];
+                    echo "<tr>";
+                    echo "<td>".$id_cita."</td>";
+                    echo "<td>".$row['fecha']."</td>";
+                    echo "<td>".$row['horario']."</td>";
+                    echo "<td> Edificio: ".$row['edificio']."<br> Piso: ".$row['piso']."<br> Consultorio:".$row['id_consultorio']."</td>";
+                    echo '<td>'.$row[24]." ".$row[25]." ".$row[26].'</td>';
+                    echo "</tr>";
+                }
+                echo "</table>";
+            }         
+        ?>
     </div>
 </body>
 </html>
