@@ -1,6 +1,6 @@
 <?php 
 	/*Database connection*/
-
+ 
 	include "../dbh.php";
 
 	/*POST variables*/

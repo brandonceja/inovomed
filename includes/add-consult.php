@@ -9,19 +9,74 @@ if(isset($_SESSION['u_id']))
 {
     if(isset($_GET['submit'])){
 
-        $paciente =  $_SESSION["u_id"];
-        $medico = $_GET["cedula"];
-        $especialidad = $_GET["especialidad"];
-        $horario = $_GET["horario"];
-        $consultorio =  $_GET["consultorio"];
-        $fecha = $_GET["fecha"];
+        $paciente       = $_SESSION["u_id"];
+        $medico         = mysqli_real_escape_string($conn,$_GET["cedula"]);
+        $especialidad   = mysqli_real_escape_string($conn,$_GET["especialidad"]);
+        $hora        = mysqli_real_escape_string($conn,$_GET["horario"]);
+        $consultorio    =  mysqli_real_escape_string($conn,$_GET["consultorio"]);
+        $fecha          = mysqli_real_escape_string($conn,$_GET["fecha"]);
 
-        $horario = $horario.":00:00";
+        $hora = $hora.":00:00";
 
-        $sql = "INSERT INTO citas (id, medico, paciente, consultorio, horario, fecha) ".
-            "VALUES ('', '$medico', '$paciente', '$consultorio', '$horario', '$fecha')";
-
-        $query =  mysqli_query($conn, $sql);
+        if (!empty($medico) && !empty($fecha) && !empty($hora) && !empty($consultorio) && !empty($paciente)) {
+	
+            /*Check regex*/
+    
+                if (is_numeric($medico) && is_numeric($consultorio) && is_numeric($paciente)) {
+                    
+                    /* Check if patient has already a scheduled consult */
+                    $sql = "SELECT * FROM citas WHERE paciente = '$paciente'";
+                    $query = mysqli_query($conn, $sql);
+    
+                    if(mysqli_num_rows($query) == 0){
+    
+                        /*Check if doctor is busy*/
+                        $sql = "SELECT * FROM citas WHERE medico = '$medico' AND horario = '$hora' AND fecha = '$fecha';";
+                        $query = mysqli_query($conn, $sql);
+    
+                        if(mysqli_num_rows($query) == 0){  
+    
+                            /*Check if consult room is busy*/
+                            $sql = "SELECT * FROM citas WHERE consultorio = '$consultorio' AND horario = '$hora' AND fecha = '$fecha';";
+                            $query = mysqli_query($conn, $sql);
+    
+                            if(mysqli_num_rows($query) == 0){
+    
+                                 /*Check if specialties match*/
+                                $sql = "SELECT * FROM medicos INNER JOIN consultorios ON medicos.especialidad = consultorios.especialidad
+                                            WHERE medicos.cedula = '$medico' AND consultorios.id_consultorio='$consultorio';";
+                                $query = mysqli_query($conn, $sql);
+    
+                                if(mysqli_num_rows($query) > 0){
+                                    /*Insert into database*/
+                                    $sql = "INSERT INTO citas (id, medico, paciente, consultorio, horario, fecha) 
+                                    VALUES ('', '$medico', '$paciente', '$consultorio', '$hora', '$fecha')";
+                                    $query = mysqli_query($conn, $sql);
+    
+                                }else{
+                                    header("location: ../consultas2.php?error=doctor-and-consultorio-dont-match&cedula=".$cedula."&especialidad=".$especialidad);
+                                    exit();
+                                }  
+                            }else{
+                                header("location: ../consultas2.php?error=consultorio-busy&cedula=".$cedula."&especialidad=".$especialidad);
+                                exit();
+                            }  
+                        }else{
+                            header("location: ../consultas2.php?error=doctor-busy&cedula=".$cedula."&especialidad=".$especialidad);
+                            exit();
+                        }	
+                    }else{
+                        header("location: ../consultas2.php?error=patient-already-scheduled&cedula=".$cedula."&especialidad=".$especialidad);
+                        exit();
+                    }	
+                }else{
+                    header("location: ../consultas2.php?error=invalid-char&cedula=".$cedula."&especialidad=".$especialidad);
+                    exit();
+                }
+        }else{
+            header("location: ../consultas2.php?error=empty&cedula=".$cedula."&especialidad=".$especialidad);
+            exit();
+        }
 
         $last_id = mysqli_insert_id($conn);
 
@@ -79,7 +134,7 @@ if(isset($_SESSION['u_id']))
         <div style="background-color:white; text-align:center; width: 80%; margin-left:10%; padding-top: 3em;">
             <img src="https://i.ibb.co/SB9L5V8/logo.png" alt="">
             <br><br>
-                <h2 style="color:#bebebe; font-family:Arial;">Su cita es en '.$fecha.' a las '.$horario.'. <br>
+                <h2 style="color:#bebebe; font-family:Arial;">Su cita es en '.$fecha.' a las '.$hora.'. <br>
                     en el consultorio '.$consultorio.', edificio '.$edificio.', piso '.$piso.' <br>
                     con Dr. '.$nombre.' '.$apellidoP.' '.$apellidoM.'
                 </h2>		
@@ -129,7 +184,7 @@ if(isset($_SESSION['u_id']))
         <div style="background-color:white; text-align:center; width: 80%; margin-left:10%; padding-top: 3em;">
             <img src="https://i.ibb.co/SB9L5V8/logo.png" alt="">
             <br><br>
-                <h2 style="color:#bebebe; font-family:Arial;">Su cita es en '.$fecha.' a las '.$horario.'. <br>
+                <h2 style="color:#bebebe; font-family:Arial;">Su cita es en '.$fecha.' a las '.$hora.'. <br>
                     en el consultorio '.$consultorio.', edificio '.$edificio.', piso '.$piso.' <br>
                     con el paciente '.$nombreUser.' '.$apellidoPUser.' '.$apellidoMUser.'
                 </h2>		
@@ -152,8 +207,6 @@ if(isset($_SESSION['u_id']))
         } else {
             echo 'Message has been sent';
         }
-
-
 
         header("Location: ./users/profile.php?mail=$email");
         exit();
