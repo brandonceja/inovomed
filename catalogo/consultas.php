@@ -53,8 +53,8 @@ while($row = mysqli_fetch_array($query)){
 		echo "<tr>
 				<th>".$row[0]."</th>
 				<th>".$row[7]." ".$row[8]." ".$row[9]."</th>
-				<th>".$row[28]."</th>
-				<th>".$row[17]." ".$row[18]." ".$row[19]."</th>
+				<th>".$row[29]."</th>
+				<th>".$row[18]." ".$row[19]." ".$row[20]."</th>
 				<th>".$row['consultorio']."</th>
 				<th>".$row['fecha']."</th>
 				<th>".$row['horario']."</th>
@@ -137,7 +137,6 @@ echo "</table>";
 		<!-- Updater -->
 		<div class="updater">
 			<br><br>
-			<h2>Modifique los datos necesarios, los demás déjelos vacios.</h2>
 			<form action="../includes/catalogue-manager/update-consult.php" method="POST">
             <input type="hidden" name="id" value="none" id="key">
             <span>Especialidad-Médico</span><select name="medico">
