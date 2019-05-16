@@ -34,6 +34,15 @@
 		<?php
 		if(isset($_SESSION['u_id']))
 		{
+			$uid = $_SESSION['u_id'];
+			
+			$sql = "SELECT * FROM citas_lab INNER JOIN users ON citas_lab.paciente = users.id WHERE users.id = '$uid'";
+			$query =  mysqli_query($conn, $sql);
+
+			if(mysqli_num_rows($query)>0){
+				header("location: ./includes/users/citas-lab.php");
+				exit();
+			}
 	?>
 			<form action="lab2.php" method="GET" style="width: 500px;"><br><br>
 			<img src="./img/paso1.png" alt=""><br>

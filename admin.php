@@ -54,7 +54,7 @@
 			<a class="manager" href="./catalogo/consultorios.php">
 				<h2>Consultorios</h2>
 			</a>
-			<a class="manager" href="">
+			<a class="manager" href="./catalogo/citas_lab.php">
 				<h2>Laboratorio</h2>
 			</a>
 			<a class="manager" href="./catalogo/medicamentos.php">

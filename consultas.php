@@ -34,6 +34,15 @@
 		<?php
 		if(isset($_SESSION['u_id']))
 		{
+			$uid = $_SESSION['u_id'];
+			
+			$sql = "SELECT * FROM citas INNER JOIN users ON citas.paciente = users.id WHERE users.id = '$uid'";
+			$query =  mysqli_query($conn, $sql);
+
+			if(mysqli_num_rows($query)>0){
+				header("location: ./includes/users/citas.php");
+				exit();
+			}
 	?>
 			<form action="consultas1.php" method="GET"><br><br>
 			<img src="./img/paso1.png" alt=""><br>

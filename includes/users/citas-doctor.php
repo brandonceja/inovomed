@@ -34,7 +34,7 @@ if(isset($_SESSION['u_id']))
 		<div id="logo">
 			<img src="../../logo.png" alt="">
 			<div id="categories">
-            <a href="../../index.php"><button class="lgn">Página principal</button></a>
+            <a href="./profile-doctor.php"><button class="lgn">Perfil</button></a>
 			</div>
 		</div>
         <div id="login">
