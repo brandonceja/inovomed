@@ -29,7 +29,7 @@
 				<img src="Boceto.png" alt="">
 				<h1><span class="inov"><span class="big">I</span>NOVO</span><span class="med"><span class="big">M</span>ED</span></h1>
 			</div>
-			<button type="" id="btn-cover">Conócenos</button>
+			<!--<button type="" id="btn-cover">Conócenos</button>-->
 		</div>	
 	</div>
 	<div id="phrase">

@@ -20,7 +20,10 @@
 		<div id="change-cover">
 			<div id="c-cover-r">
 				<p>Cambiar imagen de portada: </p>
-				<button class="lgn no-p">Cambiar</button>
+				<form action="./uploads/upload.php" method="post" enctype="multipart/form-data">
+					<input type="file" name="fileToUpload" id="fileToUpload"><br>
+					<input type="submit" value="Cambiar" name="submit" class="lgn no-p">
+				</form>
 			</div>
 			<div id="c-cover-l"></div>
 		</div>
@@ -28,17 +31,32 @@
 			<div class="img-c">
 				<img src="img/img1.jpg" alt="">
 				<p>Cambiar imagen 1</p>
-				<center><button class="lgn no-p">Cambiar</button></center>
+				<center>
+				<form action="./uploads/upload1.php" method="post" enctype="multipart/form-data" style="margin-top: -0.1em;">
+					<input type="file" name="fileToUpload" id="fileToUpload"><br>
+					<input type="submit" value="Cambiar" name="submit" class="lgn no-p">
+				</form>
+				</center>
 			</div>
 			<div class="img-c">
 				<img src="img/img2.jpg" alt="">
 				<p>Cambiar imagen 2</p>
-				<center><button class="lgn no-p">Cambiar</button></center>
+				<center>
+				<form action="./uploads/upload2.php" method="post" enctype="multipart/form-data" style="margin-top: -0.1em;">
+					<input type="file" name="fileToUpload" id="fileToUpload"><br>
+					<input type="submit" value="Cambiar" name="submit" class="lgn no-p">
+				</form>
+				</center>
 			</div>
 			<div class="img-c">
 				<img src="img/img3.jpg" alt="">
 				<p>Cambiar imagen 3</p>
-				<center><button class="lgn no-p">Cambiar</button></center>
+				<center>
+				<form action="./uploads/upload3.php" method="post" enctype="multipart/form-data" style="margin-top: -0.1em;">
+					<input type="file" name="fileToUpload" id="fileToUpload"><br>
+					<input type="submit" value="Cambiar" name="submit" class="lgn no-p">
+				</form>
+				</center>
 			</div>
 		</div>
 		<div id="management">
