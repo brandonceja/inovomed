@@ -54,27 +54,27 @@ if(isset($_SESSION['u_id']))
                                     $query = mysqli_query($conn, $sql);
     
                                 }else{
-                                    header("location: ../consultas2.php?error=doctor-and-consultorio-dont-match&cedula=".$cedula."&especialidad=".$especialidad);
+                                    header("location: ../consultas2.php?error=doctor-and-consultorio-dont-match&cedula=".$medico."&especialidad=".$especialidad);
                                     exit();
                                 }  
                             }else{
-                                header("location: ../consultas2.php?error=consultorio-busy&cedula=".$cedula."&especialidad=".$especialidad);
+                                header("location: ../consultas2.php?error=consultorio-busy&cedula=".$medico."&especialidad=".$especialidad);
                                 exit();
                             }  
                         }else{
-                            header("location: ../consultas2.php?error=doctor-busy&cedula=".$cedula."&especialidad=".$especialidad);
+                            header("location: ../consultas2.php?error=doctor-busy&cedula=".$medico."&especialidad=".$especialidad);
                             exit();
                         }	
                     }else{
-                        header("location: ../consultas2.php?error=patient-already-scheduled&cedula=".$cedula."&especialidad=".$especialidad);
+                        header("location: ../consultas2.php?error=patient-already-scheduled&cedula=".$medico."&especialidad=".$especialidad);
                         exit();
                     }	
                 }else{
-                    header("location: ../consultas2.php?error=invalid-char&cedula=".$cedula."&especialidad=".$especialidad);
+                    header("location: ../consultas2.php?error=invalid-char&cedula=".$medico."&especialidad=".$especialidad);
                     exit();
                 }
         }else{
-            header("location: ../consultas2.php?error=empty&cedula=".$cedula."&especialidad=".$especialidad);
+            header("location: ../consultas2.php?error=empty&cedula=".$medico."&especialidad=".$especialidad);
             exit();
         }
 
