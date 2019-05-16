@@ -1,3 +1,7 @@
+<?php session_start(); 
+
+if($_SESSION['u_id'] == "god"){
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,3 +86,9 @@
 	</div>
 </body>
 </html>
+<?php
+}else{
+	header("Location: ./index.php");
+	exit();
+}
+?>
