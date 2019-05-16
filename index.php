@@ -91,7 +91,11 @@
 					<img src="img/twitter.png" alt="" height="40" width="40">
 					<img src="img/instagram.png" alt="" height="42" width="42">
 				</div><br>
-				<button>Contactar</button>
+				<br>
+				<br>
+				<br>
+				<br>
+				<!--<button>Contactar</button>-->
 			</div>
 		</div>
 		<div id="map-responsive">

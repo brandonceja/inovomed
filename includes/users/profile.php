@@ -34,6 +34,7 @@ if(isset($_SESSION['u_id']))
 			<div id="categories">
 			</div>
 		</div>
+        <a href="../../index.php"><button class="lgn">Página principal</button></a>
         <div id="login">
      		<a href="../logout.php">
      			<button id="btn-lout">Cerrar Sesión</button>

@@ -40,6 +40,7 @@ if(isset($_SESSION['u_id']))
 		<div id="logo">
 			<img src="../../logo.png" alt="">
 			<div id="categories">
+            <a href="../../index.php"><button class="lgn">Página principal</button></a>
 			</div>
 		</div>
         <div id="login">

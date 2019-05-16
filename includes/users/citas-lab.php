@@ -34,6 +34,7 @@ if(isset($_SESSION['u_id']))
 		<div id="logo">
 			<img src="../../logo.png" alt="">
 			<div id="categories">
+            <a href="../../index.php"><button class="lgn">Página principal</button></a>
 			</div>
 		</div>
         <div id="login">
@@ -59,7 +60,7 @@ if(isset($_SESSION['u_id']))
             }else{
                 echo "<br><br>";
                 while($row = mysqli_fetch_array($query)){
-                    $id_cita = $row['id'];
+                    $id_cita = $row[0];
                     echo "<h2>Su cita es en ".$row['fecha']." a las ".$row['hora']."</h2>";	
                     echo "<h2> en el laboratorio, para el servicio ".$row['nombre']."</h2>";		
                 }            
@@ -75,7 +76,7 @@ if(isset($_SESSION['u_id']))
     document.getElementsByClassName('cancel')[0].addEventListener("click", function(){
         if(confirm("¿Seguro de que quiere cancelar su cita?")){
             var cita = document.getElementById('citta').value;
-            window.location = "../delete-cita.php?cita="+cita;
+            window.location = "../delete-cita-lab.php?cita="+cita;
         }
     });
 </script>

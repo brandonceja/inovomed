@@ -20,6 +20,7 @@
 		<div id="logo">
 			<img src="logo.png" alt="">
 		</div>
+		<a href="./index.php"><button class="lgn">Página principal</button></a>
 	<?php	
        include "includes/display-buttons.php";
     ?>
